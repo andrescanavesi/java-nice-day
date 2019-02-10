@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Java Nice Day</title>
+
+        <link data-th-href="@{/webjars/bulma/0.6.0/css/bulma.css}" rel="stylesheet">
+        <link rel="stylesheet" data-th-href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+        <script data-th-src="@{/webjars/timeago.js/3.0.0/dist/timeago.js}"></script>
+    </head>
+    <body>
+        <section class="hero is-primary is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        <i class="fa fa-github-square" aria-hidden="true"></i>&nbsp;Java Nice Day
+                    </h1>
+                </div>
+            </div>
+        </section>
+        <section  class="section">
+            <div class="container">
+                <h1 class="title">Latest posts</h1>
+                <table class="table is-hoverable is-fullwidth">
+                    <thead>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Created Date</th>
+                    </thead>
+                    <tbody>
+                        <tr data-th-each="post : ${posts}">
+                            <td>
+                                <a data-th-href="${post.title}">[[${post.title}]]</a>
+                            </td>
+                            <td>
+                                <code>[[${post.content}]]</code>
+                            </td>
+                            <td>
+                                <time data-th-attr="datetime=${post.createdDate}">[[${post.createdDate}]]</time>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <script>
+            var timeagoInstance = timeago();
+            var nodes = document.querySelectorAll('time');
+            timeagoInstance.render(nodes, 'en_US');
+        </script>
+    </body>
+</html>
