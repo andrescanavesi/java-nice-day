@@ -1,16 +1,85 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
+
     <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Admin - Java Nice Day</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" data-th-href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+        <!-- Bulma Version 0.7.2-->
+        <link data-th-href="@{/webjars/bulma/0.7.2/css/bulma.css}" rel="stylesheet">
+        <script data-th-src="@{/webjars/timeago.js/3.0.0/dist/timeago.js}"></script>
     </head>
+
     <body>
-        <div>Admin area</div>
+        <!-- START NAV -->
+        <nav class="navbar">
+            <div class="container">
+
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item is-active" href="/">
+                            Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- END NAV -->
+
+
+        <div class="container">
+
+
+            <div class="card events-card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Posts
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-table">
+                    <div class="content">
+                        <table class="table is-fullwidth is-striped">
+                            <tbody>
+                                <tr data-th-each="post : ${posts}">
+                                    <td width="5%"><i class="fa fa-bell-o"></i></td>
+                                    <td>
+                                        <a data-th-href="@{${post.id}+'/'+${post.title}}">[[${post.title}]]</a>
+                                    </td>
+                                    <td width="15%">
+                                        <time data-th-attr="datetime=${post.createdDate}">[[${post.createdDate}]]</time>
+                                    </td>
+                                    <td>
+                                        <a  data-th-href="@{'/admin/edit/'+${post.id}}">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="card-footer-item">View All</a>
+                </footer>
+            </div>
+        </div>
+
+
+
+
+        <script>
+            var timeagoInstance = timeago();
+            var nodes = document.querySelectorAll('time');
+            timeagoInstance.render(nodes, 'en_US');
+        </script>
     </body>
+
 </html>

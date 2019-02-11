@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Edit Post - Java Nice Day</title>
+        <link rel="stylesheet" data-th-href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}"/>
+        <!-- Bulma Version 0.7.2-->
+        <link data-th-href="@{/webjars/bulma/0.7.2/css/bulma.css}" rel="stylesheet">
+        <script data-th-src="@{/webjars/timeago.js/3.0.0/dist/timeago.js}"></script>
+
+    </head>
+
+    <body>
+        <!-- START NAV -->
+        <nav class="navbar">
+            <div class="container">
+
+                <div id="navbarMenu" class="navbar-menu">
+                    <div class="navbar-end">
+                        <a class="navbar-item is-active" href="/admin">
+                            Home
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- END NAV -->
+
+
+        <div class="container">
+
+            <form>
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-large" type="text" placeholder="Post title" autofocus=""
+                               th:field="*{post.title}">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <textarea class="textarea" placeholder="10 lines of textarea" rows="10"
+                                  th:field="*{post.content}">
+
+                        </textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <span class="tag is-rounded">
+                            <time data-th-attr="datetime=${post.createdDate}">[[${post.createdDate}]]</time>
+                        </span>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+        <script>
+            var timeagoInstance = timeago();
+            var nodes = document.querySelectorAll('time');
+            timeagoInstance.render(nodes, 'en_US');
+        </script>
+    </body>
+
+</html>
