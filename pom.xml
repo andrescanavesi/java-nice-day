@@ -129,6 +129,29 @@
                 </configuration>
             </plugin>
 
+            <!--
+            The successor of FunBugs plugin. https://spotbugs.github.io/
+            
+            Run: mvn spotbugs:check or mvn spotbugs:spotbugs or mvn spotbugs:gui
+            -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>3.1.11</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>gui</goal>
+                            <goal>spotbugs</goal>
+                        </goals>
+                        <id>check</id>
+                    </execution>
+                </executions>
+                <configuration>
+                    <foo>bar</foo>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
