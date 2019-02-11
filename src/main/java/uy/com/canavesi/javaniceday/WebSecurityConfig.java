@@ -24,11 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .mvcMatchers("/admin").hasRole("ADMIN")
+                .mvcMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers(EndpointRequest.to("info", "health")).permitAll()
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ACTUATOR")
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/posts/**").hasRole("USER")
                 .antMatchers("/**").permitAll()
                 .and().httpBasic();
     }
