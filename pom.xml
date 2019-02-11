@@ -105,6 +105,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <!--
+
+            To check new versions in our dependencies.
+            
             https://github.com/ning/maven-dependency-versions-check-plugin
 
             Execute like this:
@@ -131,7 +134,7 @@
 
             <!--
             The successor of FunBugs plugin. https://spotbugs.github.io/
-            
+
             Run: mvn spotbugs:check or mvn spotbugs:spotbugs or mvn spotbugs:gui
             -->
             <plugin>
